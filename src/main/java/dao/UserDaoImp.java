@@ -30,7 +30,6 @@ public class UserDaoImp implements UserDao{
         @Transactional
         @Override
         public void delete(long id){
-//        User delete = entityManager.find(User.class, id); перенес в remove
             entityManager.remove(entityManager.find(User.class, id));
         }
 
@@ -38,22 +37,18 @@ public class UserDaoImp implements UserDao{
         return entityManager.find(User.class, id);
     }
 
-        @Transactional
-        @Override
-        public void change(long id, User user){
-            User c = entityManager.find(User.class, id);
-            c.setLastName(user.getLastName());
-            c.setEmail(user.getEmail());
-            c.setFirstName(user.getFirstName());
-            entityManager.merge(c);
-        }
+    @Transactional
+    @Override
+    public void change( User user){
+        entityManager.merge(user);
+    }
+
+
         @Transactional
         @Override
         public List<User> all(){
 ////        entityManager.createQuery("DELETE from User").executeUpdate();//использоал для очистки таблицы
             return entityManager.createQuery("from Userr", User.class).getResultList();
-//            return null;
-//
         }
 }
 

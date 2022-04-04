@@ -30,7 +30,8 @@ public class WebConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() throws BeansException {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/pages/");
+//        templateResolver.setPrefix("/WEB-INF/pages/");
+        templateResolver.setPrefix("/WEB-INF/pages/users/");
         templateResolver.setSuffix(".html");
         templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;

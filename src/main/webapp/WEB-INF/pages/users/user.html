@@ -34,13 +34,13 @@
         <td><h1 th:text="${user.getFirstName()}"></h1></td>
         <td><h1 th:text="${user.getLastName()}"></h1></td>
         <td><h1 th:text="${user.getEmail()}"></h1></td>
-        <td><a th:href="@{users/update/{id}(id=${user.id})}">Edit</a></td>
-        <td><a th:href="@{users/delete/{id}(id=${user.id})}">Delete</a></td>
+        <td><a th:href="@{/update/{id}(id=${user.id})}">Edit</a></td>
+        <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
 
       </tr>
     </th:block>
   </table>
-  <p><a href="users/create">Create user</a></p>
+  <p><a href="/create">Create user</a></p>
 </div>
 </body>
 </html>

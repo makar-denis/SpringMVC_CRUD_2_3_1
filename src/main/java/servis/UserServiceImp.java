@@ -48,17 +48,19 @@ public class UserServiceImp implements UserService {
     public void delete(long id) {
         userDao.delete(id);
     }
+
     @Transactional
     @Override
-    public void change(long id, User user){
-        userDao.change(id, user);
+    public void change(User user){
+        userDao.change(user);
     }
+
+
     @Transactional
     @Override
     public List<User> all(){
 //        return list;
         return userDao.all();
-//        return null;
     }
 
     @Transactional

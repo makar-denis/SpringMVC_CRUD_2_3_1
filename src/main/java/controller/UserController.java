@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import servis.UserService;
 
 @Controller
-@RequestMapping("/users")
+//@RequestMapping("/users")// c этой аннотацией почемуто не работало
 public class UserController {
 
     private final UserService userService;
@@ -18,44 +18,39 @@ public class UserController {
             this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/users")
     public String allUser( ModelMap model) {
         model.addAttribute("listUsers", userService.all());
-        return "users/user";
+    return "user";
     }
 
     @GetMapping("/create")
     public String createUserForm(User user){
-        return "users/create";
+        return "create";
     }
 
-    @PostMapping("users/create")
+    @PostMapping("/create")
     public String createUser(User user){
         userService.add(user);
-        return "redirect:/users";
+        return "redirect:users";
     }
-    @GetMapping("delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") long id){
         userService.delete(id);
         return "redirect:/users";
     }
 
-    @GetMapping("update/{id}")
+    @GetMapping("/update/{id}")
     public String updateUserForm(@PathVariable("id") Long id, ModelMap model){
         User user = userService.getUser(id);
         model.addAttribute("user", user );
-        System.out.println("1");
-        System.out.println(user);
-        return "users/update";
+        return "update";
     }
 
-    @PostMapping("users/update")
+    @PostMapping("/update")
     public String updateUser(User user){
-        System.out.println("2");
-        userService.change(user.getId(), user);
-        System.out.println("3");
-        return "redirect:/users";
+        userService.change(user);
+        return "redirect:users";
     }
-
 
 }
