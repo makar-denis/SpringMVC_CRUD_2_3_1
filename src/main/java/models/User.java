@@ -2,7 +2,8 @@ package models;
 
 import javax.persistence.*;
 
-@Entity(name = "Userr")
+@Entity
+//        (name = "Userr")
 @Table(name = "users")
 public class User {
     @Column

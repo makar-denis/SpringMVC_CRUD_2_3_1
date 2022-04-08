@@ -1,33 +1,25 @@
 package servis;
 
 import dao.UserDao;
+import dao.UserDaoImp;
 import models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
+import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component
-//@Repository
+
 @Service
 //@Transactional
 public class UserServiceImp implements UserService {
-
-//    private List<User> list;
-//    {
-//        list=new ArrayList<>();
-//        list.add(new User("User1", "Lastname1", "user1@mail.ru"));
-//    }
-
-//    public UserServiceImp(List<User> list) {
-//        this.list = list;
-//        list.add(new User("User1", "Lastname1", "user1@mail.ru"));
-//    }
 
 
     private UserDao userDao;
@@ -35,6 +27,7 @@ public class UserServiceImp implements UserService {
     @Autowired
     public UserServiceImp (UserDao userDao){
         this.userDao = userDao;
+//        init();
     }
 
     @Transactional
@@ -55,11 +48,9 @@ public class UserServiceImp implements UserService {
         userDao.change(user);
     }
 
-
     @Transactional
     @Override
     public List<User> all(){
-//        return list;
         return userDao.all();
     }
 
@@ -69,5 +60,10 @@ public class UserServiceImp implements UserService {
         return userDao.getUser(id);
     }
 
-
+//    @PostConstruct
+//    public void init() {
+//        add(new User( "Denis", "Markachev", "@1"));
+//        add(new User("Dima", "Markachev", "@2"));
+//        add(new User("Julia", "Markacheva", "@3"));
+//    }
 }

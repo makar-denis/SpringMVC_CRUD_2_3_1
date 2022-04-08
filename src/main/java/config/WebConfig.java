@@ -17,6 +17,7 @@ import servis.UserServiceImp;
 @EnableWebMvc
 @ComponentScan(
         basePackages = {"dao","servis","config","controller","models"}
+//        basePackages = {"servis"}
         )
 public class WebConfig implements WebMvcConfigurer {
 

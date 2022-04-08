@@ -21,10 +21,10 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:db.properties")
-@ComponentScan(
-//        value = "config"
-        basePackages = {"dao","servis","config","controller","models"}
-)
+//@ComponentScan(
+////        value = "config"
+//        basePackages = {"dao","servis","config","controller","models"}
+//)
 public class AppConfig {
 
 
@@ -34,13 +34,15 @@ public class AppConfig {
         this.env = env;
     }
 
-    @Bean(name = "entityManagerFactory")
+    @Bean
+//            (name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setDataSource(dataSource());
         em.setPackagesToScan("models");
+//        em.setPackagesToScan("dao");
         return em;
     }
 
