@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-<div>
+
   <table>
     <caption>USERS</caption>
     <tr>
@@ -28,19 +28,22 @@
       <th>Update</th>
       <th>Delete</th>
     </tr>
-    <th:block th:each="user : ${listUsers}">
-      <tr>
-        <td> <h1 th:text="${user.getId()}"></h1></td>
-        <td><h1 th:text="${user.getFirstName()}"></h1></td>
-        <td><h1 th:text="${user.getLastName()}"></h1></td>
-        <td><h1 th:text="${user.getEmail()}"></h1></td>
+    <tr th:each="user : ${listUsers}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getFirstName()}"></td>
+        <td th:text="${user.getLastName()}"></td>
+        <td th:text="${user.getEmail()}"></td>
         <td><a th:href="@{/update/{id}(id=${user.id})}">Edit</a></td>
-        <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+<!--        <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>-->
+        <td>
+            <form th:method="DELETE" th:action="@{/delete/(id=${user.getId()})}">
+          <input type="submit" value="DEL"/>
+        </form>
+        </td>
 
       </tr>
-    </th:block>
+
   </table>
   <p><a href="/create">Create user</a></p>
-</div>
 </body>
 </html>

@@ -21,7 +21,6 @@ import java.util.List;
 //@Transactional
 public class UserServiceImp implements UserService {
 
-
     private UserDao userDao;
 
     @Autowired
@@ -60,6 +59,7 @@ public class UserServiceImp implements UserService {
         return userDao.getUser(id);
     }
 
+//    @Transactional
 //    @PostConstruct
 //    public void init() {
 //        add(new User( "Denis", "Markachev", "@1"));
