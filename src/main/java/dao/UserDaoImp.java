@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Component
-//@Transactional
 public class UserDaoImp implements UserDao{
 
         @PersistenceContext
@@ -22,13 +21,11 @@ public class UserDaoImp implements UserDao{
             this.entityManager = entityManager;
         }
 
-//        @Transactional
         @Override
         public void add (User user) {
             entityManager.persist(user);
         }
 
-//        @Transactional
         @Override
         public void delete(long id){
 //            entityManager.remove(entityManager.find(User.class, id));//было
@@ -42,13 +39,11 @@ public class UserDaoImp implements UserDao{
         return entityManager.find(User.class, id);
     }
 
-//    @Transactional
     @Override
     public void change( User user){
         entityManager.merge(user);
     }
 
-//        @Transactional
         @Override
         public List<User> all(){
 ////        entityManager.createQuery("DELETE from User").executeUpdate();//использоал для очистки таблицы

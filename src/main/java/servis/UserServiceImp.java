@@ -18,7 +18,6 @@ import java.util.List;
 
 
 @Service
-//@Transactional
 public class UserServiceImp implements UserService {
 
     private UserDao userDao;
@@ -26,7 +25,6 @@ public class UserServiceImp implements UserService {
     @Autowired
     public UserServiceImp (UserDao userDao){
         this.userDao = userDao;
-//        init();
     }
 
     @Transactional
@@ -59,11 +57,4 @@ public class UserServiceImp implements UserService {
         return userDao.getUser(id);
     }
 
-//    @Transactional
-//    @PostConstruct
-//    public void init() {
-//        add(new User( "Denis", "Markachev", "@1"));
-//        add(new User("Dima", "Markachev", "@2"));
-//        add(new User("Julia", "Markacheva", "@3"));
-//    }
 }

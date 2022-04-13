@@ -7,8 +7,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import servis.UserService;
 
+import javax.annotation.PostConstruct;
+
 @Controller
-//@RequestMapping("/users")// c этой аннотацией почемуто не работало
 public class UserController {
 
     private final UserService userService;
@@ -54,10 +55,11 @@ public class UserController {
         return "redirect:users";
     }
 
-//    @PostMapping("/update")
-//    public String updateUser(User user){
-//        userService.change(user);
-//        return "redirect:users";
-//    }
+    @PostConstruct
+    public void init() {
+        userService.add(new User( "Denis", "Markachev", "@1"));
+        userService.add(new User("Dima", "Markachev", "@2"));
+        userService.add(new User("Julia", "Markacheva", "@3"));
+    }
 
 }
